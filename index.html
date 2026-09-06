@@ -1,428 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foodies Park — Darbhanga | Official Menu</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#0b0a08; --bg2:#14120e; --card:#1c1813; --gold:#d4a24e; --gold2:#f7d383;
-  --text:#f5f0e6; --muted:#a39887; --line:rgba(212,162,78,.2);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;overflow-x:hidden}
-h1,h2,h3{font-family:'Playfair Display',serif}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-section{padding:60px 0}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodies Park – Darbhanga | Official Menu & Booking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0a08;
+      --bg2: #14120e;
+      --card: #1c1914;
+      --text: #f5f0e6;
+      --muted: #a39887;
+      --accent: #d4af37;
+      --accent-glow: rgba(212, 175, 55, 0.25);
+      --green: #25d366;
+    }
 
-/* WELCOME OVERLAY (STAYS FOR 2 SECONDS THEN FADES OUT) */
-#welcomeOverlay {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100vh;
-  background: radial-gradient(circle at 50% 40%, rgba(212,162,78,.3), transparent 70%), #070605;
-  z-index: 999999;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  animation: fadeOut 0.6s ease-in-out 2s forwards;
-}
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); padding-bottom: 90px; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+    a { color: inherit; text-decoration: none; }
 
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
-}
+    .wrap { max-width: 800px; margin: 0 auto; padding: 0 16px; }
 
-.welcome-box {
-  border: 1px solid var(--line);
-  padding: 40px 25px;
-  border-radius: 20px;
-  background: rgba(28, 24, 19, 0.98);
-  backdrop-filter: blur(12px);
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.9);
-}
+    /* Hero */
+    .hero { text-align: center; padding: 35px 20px 25px; background: linear-gradient(180deg, #1f1b13 0%, var(--bg) 100%); border-bottom: 1px solid rgba(212,175,55,0.15); }
+    .brand { font-size: 32px; font-weight: 800; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 4px; }
+    .location-tag { font-size: 13px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+    .tagline { font-size: 14px; font-style: italic; color: #d1c7b7; margin-bottom: 20px; }
 
-.welcome-logo {
-  font-family: 'Cinzel', serif;
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: 2px;
-  background: linear-gradient(135deg, var(--gold2), var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 8px;
-}
+    .quick-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
+    .btn-action { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: 30px; font-size: 13px; font-weight: 600; background: rgba(212,175,55,0.1); color: var(--accent); border: 1px solid rgba(212,175,55,0.3); }
 
-.welcome-tag {
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
+    /* Stats Box */
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 25px 0; text-align: center; }
+    .stat-card { background: var(--card); padding: 15px 10px; border-radius: 12px; border: 1px solid rgba(212,175,55,0.1); }
+    .stat-num { font-size: 18px; font-weight: 800; color: var(--accent); }
+    .stat-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,10,8,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:65px}
-.logo{font-family:'Cinzel',serif;font-size:20px;font-weight:900;letter-spacing:2px;background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.logo span{font-family:'Playfair Display',serif;color:var(--text);-webkit-text-fill-color:var(--text);font-weight:500;font-style:italic;font-size:12px;letter-spacing:1px;margin-left:6px}
+    /* Booking Card */
+    .booking-card { background: var(--card); border: 1px solid rgba(212,175,55,0.3); border-radius: 18px; padding: 20px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    .booking-card h2 { font-size: 22px; color: var(--accent); text-align: center; margin-bottom: 6px; }
+    .booking-card p { font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 20px; }
 
-.nav-btns{display:flex;gap:10px;align-items:center}
-.btn{display:inline-block;background:linear-gradient(135deg,var(--gold),#a67728);color:#0f0b04;font-weight:600;padding:10px 20px;border-radius:50px;font-size:13px;letter-spacing:.5px;transition:.3s;border:none;cursor:pointer;text-align:center}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(212,162,78,.3)}
+    .cat-title { font-size: 16px; color: var(--accent); border-bottom: 1px dashed rgba(212,175,55,0.3); padding-bottom: 6px; margin: 20px 0 12px; text-transform: uppercase; letter-spacing: 1px; }
 
-/* HERO */
-.hero{min-height:85vh;display:flex;align-items:center;position:relative;padding-top:80px;text-align:center;
-  background:radial-gradient(circle at 50% 30%,rgba(212,162,78,.15),transparent 60%),var(--bg)}
-.hero .wrap{max-width:750px;margin:0 auto}
-.kicker{color:var(--gold);letter-spacing:4px;font-size:11px;text-transform:uppercase;margin-bottom:12px;font-weight:500}
-.hero h1{font-size:clamp(38px,6vw,62px);line-height:1.15;margin:10px 0 18px;font-weight:800}
-.hero h1 em{color:var(--gold2);font-style:italic;font-weight:500}
-.hero p{color:var(--muted);font-size:15px;line-height:1.8;font-weight:300;margin:0 auto 30px}
-.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn.ghost{background:transparent;border:1px solid var(--gold);color:var(--gold)}
-.btn.ghost:hover{background:var(--gold);color:#0f0b04}
+    .item-select-list { display: flex; flex-direction: column; gap: 10px; }
+    .item-row { display: flex; justify-content: space-between; align-items: center; background: var(--bg2); padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05); }
+    .item-name { font-weight: 600; font-size: 14px; color: var(--text); }
+    .item-price { font-size: 13px; color: var(--accent); font-weight: 500; }
 
-/* STATS BAR */
-.stats{display:flex;justify-content:center;gap:35px;margin-top:40px;border-top:1px solid var(--line);padding-top:25px}
-.stat-item b{font-family:'Cinzel',serif;font-size:22px;color:var(--gold2);display:block}
-.stat-item span{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+    .qty-controls { display: flex; align-items: center; gap: 8px; background: #2a251d; padding: 4px 8px; border-radius: 20px; }
+    .qty-btn { background: var(--accent); color: #000; border: none; width: 24px; height: 24px; border-radius: 50%; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .qty-val { font-size: 13px; font-weight: 700; min-width: 16px; text-align: center; }
 
-/* SECTION HEADS */
-.shead{text-align:center;max-width:600px;margin:0 auto 30px}
-.shead .kicker{margin-bottom:6px}
-.shead h2{font-size:clamp(28px,4vw,38px);margin:6px 0 8px}
-.shead p{color:var(--muted);font-weight:300;font-size:13.5px}
+    .sticky-order-bar { position: sticky; bottom: 85px; background: rgba(28, 25, 20, 0.95); backdrop-filter: blur(10px); border: 1px solid var(--accent); padding: 15px; border-radius: 14px; margin-top: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.8); }
+    .total-text { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .total-amount { color: var(--accent); font-size: 18px; }
 
-/* MENU SECTION */
-#menuSection{background:var(--bg2)}
-.menu-cat-title{color:var(--gold2);font-family:'Cinzel',serif;font-size:20px;margin:30px 0 15px;border-bottom:1px solid var(--line);padding-bottom:6px;letter-spacing:1px}
-.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.mi{display:flex;justify-content:space-between;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
-.mi h3{font-size:14px;font-weight:500;color:var(--text)}
-.mi .p{font-family:'Playfair Display',serif;color:var(--gold2);font-size:14px;white-space:nowrap;font-weight:600}
+    .btn-order-whatsapp { background: var(--green); color: #fff; border: none; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 15px; width: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 15px rgba(37,211,102,0.3); }
 
-/* REVIEWS */
-#reviews{background:var(--bg)}
-.rv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.rv{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
-.rv .stars{color:var(--gold);letter-spacing:2px;margin-bottom:8px;font-size:13px}
-.rv p{color:var(--muted);font-weight:300;line-height:1.7;font-size:13px;font-style:italic}
-.rv b{display:block;margin-top:12px;font-size:13px;color:var(--text)}
+    /* Info Section */
+    .info-sec { background: var(--card); border-radius: 16px; padding: 20px; margin: 25px 0; border: 1px solid rgba(255,255,255,0.05); }
+    .info-sec h3 { color: var(--accent); margin-bottom: 12px; font-size: 18px; }
+    .info-item { font-size: 13px; color: var(--muted); margin-bottom: 10px; line-height: 1.6; }
+    .info-item b { color: var(--text); }
 
-/* CONTACT */
-#contact{background:var(--bg2)}
-.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}
-.crow{margin-bottom:16px}
-.crow b{display:block;font-size:14.5px;margin-bottom:4px;color:var(--gold2)}
-.crow span{color:var(--muted);font-size:13.5px;font-weight:300}
-.crow a{color:var(--text);text-decoration:underline}
-.map-box{border-radius:18px;border:1px solid var(--line);background:var(--card);padding:25px;text-align:center}
+    /* Footer */
+    footer { text-align: center; padding: 20px 0; font-size: 12px; color: var(--muted); border-top: 1px solid rgba(255,255,255,0.05); }
 
-/* FLOATING WHATSAPP BUTTON */
-.whatsapp-float {
-  position: fixed;
-  bottom: 25px;
-  right: 20px;
-  background-color: #25d366;
-  color: #FFF;
-  border-radius: 50px;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0px 4px 20px rgba(37, 211, 102, 0.5);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  transition: all 0.3s ease;
-  animation: pulseWa 2s infinite;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0px 6px 25px rgba(37, 211, 102, 0.7);
-  color: #fff;
-}
-
-.whatsapp-float svg {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-}
-
-@keyframes pulseWa {
-  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-}
-
-/* FOOTER */
-footer{border-top:1px solid var(--line);padding:30px 0;background:#070605;text-align:center}
-footer .logo{font-size:22px}
-footer p{color:var(--muted);font-size:12px;margin-top:6px}
-
-@media(max-width:768px){
-  .menu-grid,.rv-grid,.ct-grid{grid-template-columns:1fr}
-  section{padding:45px 0}
-  .whatsapp-float { bottom: 20px; right: 15px; padding: 10px 16px; font-size: 13px; }
-}
-</style>
+    /* Floating WhatsApp */
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: var(--green); color: #fff; border-radius: 50px; padding: 12px 18px; font-size: 14px; font-weight: 600; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 10000; display: flex; align-items: center; gap: 8px; }
+    .whatsapp-float svg { width: 22px; height: 22px; fill: currentColor; }
+  </style>
 </head>
-<!-- FLOATING WHATSAPP BUTTON -->
-<a href="https://wa.me/916272357469?text=Hello%20Foodies%20Park!%20I%20want%20to%20order%20food%20from%20your%20menu." class="whatsapp-float" target="_blank">
-  <svg viewBox="0 0 32 32">
-    <path d="M16 2a13 13 0 0 0-11 19.8L3 29l7.3-1.9A13 13 0 1 0 16 2zm0 23.8a10.8 10.8 0 0 1-5.5-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4A10.8 10.8 0 1 1 16 25.8zm5.9-8.1c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a9 9 0 0 1-2.6-1.6 10 10 0 0 1-1.8-2.2c-.2-.3 0-.5.1-.7l.5-.6c.1-.2.2-.4.3-.5a.4.4 0 0 0 0-.4c-.1-.2-.7-1.7-1-2.3s-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.8 6.4 6.4 0 0 0 1.3 3.4A14.6 14.6 0 0 0 15 21.3a17 17 0 0 0 3.3 1.2 4 4 0 0 0 1.9.1 3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.4-.2-.7-.4z"/>
-  </svg>
-  <span>Order on WhatsApp</span>
-</a>
-  
-  <body>
+<body>
 
-<div id="welcomeOverlay">
-  <div class="welcome-box">
-    <div class="welcome-logo">FOODIES PARK</div>
-    <div class="welcome-tag">Darbhanga • Khan Chowk</div>
-    <h2 style="color:var(--text); font-size:18px; margin-bottom:10px;">Welcome</h2>
-    <p style="color:var(--muted); font-size:13px; font-style:italic;">"Experience Authentic Arabian Mandi & Tandoori Specials"</p>
-  </div>
-</div>
-
-<nav>
-  <div class="wrap nav-in">
-    <div class="logo">FOODIES PARK<span>Darbhanga</span></div>
-    <div class="nav-btns">
-      <a href="tel:6272357469" class="btn ghost" style="padding: 8px 14px; font-size:12px;">📞 Call</a>
-      <a href="https://maps.app.goo.gl/ZqESwdss1cTvxLEf7" target="_blank" class="btn" style="padding: 8px 14px; font-size:12px;">Location</a>
-    </div>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="wrap">
-    <div class="kicker">Khan Chowk, Darbhanga</div>
-    <h1>Authentic <em>Mandi & Tandoor</em></h1>
-    <p>From slow-cooked Arabic-style Mandi to smoky tandoor kebabs and rich handi gravies — Foodies Park serves flavours the whole city talks about.</p>
-    <div class="hero-cta">
-      <button class="btn" onclick="gotoMenu()">Explore Full Menu</button>
-      <a href="https://maps.app.goo.gl/ZqESwdss1cTvxLEf7" target="_blank" class="btn ghost">Get Directions</a>
-    </div>
+  <!-- HERO SECTION -->
+  <div class="hero wrap">
+    <div class="brand">Foodies Park</div>
+    <div class="location-tag">Darbhanga • Khan Chowk</div>
+    <div class="tagline">"Experience Authentic Arabian Mandi & Tandoori Specials"</div>
     
-    <div class="stats">
-      <div class="stat-item">
-        <b>150+</b>
-        <span>Daily Orders</span>
+    <div class="quick-actions">
+      <a href="tel:+916272357469" class="btn-action">📞 Call Now</a>
+      <a href="#booking" class="btn-action">🪑 Book Your Table</a>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">150+</div>
+        <div class="stat-lbl">Daily Orders</div>
       </div>
-      <div class="stat-item">
-        <b>₹15+</b>
-        <span>Starting Price</span>
+      <div class="stat-card">
+        <div class="stat-num">₹15+</div>
+        <div class="stat-lbl">Starting Price</div>
       </div>
-      <div class="stat-item">
-        <b>4.0★</b>
-        <span>Google Rating</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="menuSection">
-  <div class="wrap">
-    <div class="shead">
-      <div class="kicker">Our Menu</div>
-      <h2>Foodies Park Specialities</h2>
-      <p>Explore our complete list of starters, mandi, main course, and tandoori specials.</p>
-    </div>
-
-    <div class="menu-cat-title">STARTER</div>
-    <div class="menu-grid">
-      <div class="mi"><h3>Chicken 65</h3><span class="p">₹249</span></div>
-      <div class="mi"><h3>Chicken Chilli</h3><span class="p">₹249</span></div>
-      <div class="mi"><h3>Chicken Manchurian</h3><span class="p">₹279</span></div>
-      <div class="mi"><h3>Paneer Chilli</h3><span class="p">₹260</span></div>
-      <div class="mi"><h3>Paneer 65</h3><span class="p">₹265</span></div>
-      <div class="mi"><h3>Chicken Lollipop</h3><span class="p">₹299</span></div>
-      <div class="mi"><h3>Drum of Heaven</h3><span class="p">₹319</span></div>
-      <div class="mi"><h3>Baby Corn Chilli</h3><span class="p">₹240</span></div>
-      <div class="mi"><h3>Mushroom Chilli</h3><span class="p">₹249</span></div>
-      <div class="mi"><h3>Paneer Pakoda</h3><span class="p">₹249</span></div>
-      <div class="mi"><h3>Chicken Pakoda</h3><span class="p">₹249/479</span></div>
-      <div class="mi"><h3>Chicken Wings</h3><span class="p">₹300</span></div>
-    </div>
-
-    <div class="menu-cat-title">ARABIAN MANDI</div>
-    <div class="menu-grid">
-      <div class="mi"><h3>Chicken Mandi</h3><span class="p">₹529 / ₹999</span></div>
-      <div class="mi"><h3>Chicken Juicy Mandi</h3><span class="p">₹549 / ₹1049</span></div>
-      <div class="mi"><h3>Mutton Mandi</h3><span class="p">₹699 / ₹1349</span></div>
-      <div class="mi"><h3>Mutton Juicy Mandi</h3><span class="p">₹749 / ₹1449</span></div>
-      <div class="mi"><h3>Al-Faham Mandi</h3><span class="p">₹549 / ₹1049</span></div>
-      <div class="mi"><h3>Extra Mandi Rice</h3><span class="p">₹199</span></div>
-      <div class="mi"><h3>Extra Chicken</h3><span class="p">₹120 / ₹239</span></div>
-      <div class="mi"><h3>Extra Mutton</h3><span class="p">₹180 / ₹299</span></div>
-      <div class="mi"><h3>Extra Soup</h3><span class="p">₹120</span></div>
-    </div>
-
-    <div class="menu-cat-title">TANDOOR SPECIALS</div>
-    <div class="menu-grid">
-      <div class="mi"><h3>Chicken Seekh Kebab</h3><span class="p">₹99</span></div>
-      <div class="mi"><h3>Tandoori Chicken</h3><span class="p">₹269 / ₹489</span></div>
-      <div class="mi"><h3>Chicken Tikka</h3><span class="p">₹299</span></div>
-      <div class="mi"><h3>Afghani Chicken</h3><span class="p">₹299 / ₹539</span></div>
-      <div class="mi"><h3>Paneer Tikka Sharik</h3><span class="p">₹299</span></div>
-      <div class="mi"><h3>Paneer Malai Tikka</h3><span class="p">₹349</span></div>
-      <div class="mi"><h3>Chicken Boti</h3><span class="p">₹299 / ₹549</span></div>
-      <div class="mi"><h3>Chicken Kasturi</h3><span class="p">₹329 / ₹569</span></div>
-      <div class="mi"><h3>Tangdi Kebab</h3><span class="p">₹299 / ₹549</span></div>
-      <div class="mi"><h3>Al-Faham Chicken</h3><span class="p">₹299 / ₹549</span></div>
-      <div class="mi"><h3>Makkhani Chicken</h3><span class="p">₹319 / ₹569</span></div>
-    </div>
-
-    <div class="menu-cat-title">MAIN COURSE (CHICKEN)</div>
-    <div class="menu-grid">
-      <div class="mi"><h3>Butter Chicken</h3><span class="p">₹349 / ₹640</span></div>
-      <div class="mi"><h3>Butter Chicken Boneless</h3><span class="p">₹375 / ₹745</span></div>
-      <div class="mi"><h3>Chicken Punjabi</h3><span class="p">₹349 / ₹699</span></div>
-      <div class="mi"><h3>Chicken Curry</h3><span class="p">₹299 / ₹549</span></div>
-      <div class="mi"><h3>Chicken Creamy</h3><span class="p">₹329 / ₹639</span></div>
-      <div class="mi"><h3>Chicken Kali Mirch</h3><span class="p">₹349 / ₹649</span></div>
-      <div class="mi"><h3>Chicken Do Pyaza</h3><span class="p">₹329 / ₹649</span></div>
-      <div class="mi"><h3>Tawa Chicken</h3><span class="p">₹349 / ₹649</span></div>
-      <div class="mi"><h3>Chicken Korma</h3><span class="p">₹329 / ₹629</span></div>
-      <div class="mi"><h3>Chicken Jilani Giri</h3><span class="p">₹349 / ₹649</span></div>
-      <div class="mi"><h3>Chicken Changezi</h3><span class="p">₹399 / ₹799</span></div>
-      <div class="mi"><h3>Chicken Lajawab</h3><span class="p">₹399 / ₹799</span></div>
-      <div class="mi"><h3>Chicken Handi</h3><span class="p">₹349 / ₹699</span></div>
-      <div class="mi"><h3>Chicken Kadai</h3><span class="p">₹349 / ₹699</span></div>
-      <div class="mi"><h3>Chicken Masala</h3><span class="p">₹349 / ₹699</span></div>
-    </div>
-
-    <div class="menu-cat-title">MUTTON SPECIALS</div>
-    <div class="menu-grid">
-      <div class="mi"><h3>Mutton Kadai</h3><span class="p">₹379 / ₹719</span></div>
-      <div class="mi"><h3>Mutton Roghan Josh</h3><span class="p">₹399 / ₹749</span></div>
-      <div class="mi"><h3>Mutton Do Pyaza</h3><span class="p">₹399 / ₹749</span></div>
-      <div class="mi"><h3>Mutton Korma</h3><span class="p">₹399 / ₹749</span></div>
-      <div class="mi"><h3>Mutton Stew</h3><span class="p">₹399 / ₹749</span></div>
-      <div class="mi"><h3>Mutton Bhuna</h3><span class="p">₹389 / ₹729</span></div>
-      <div class="mi"><h3>Mutton Kali Mirch</h3><span class="p">₹399 / ₹749</span></div>
-      <div class="mi"><h3>Mutton Curry</h3><span class="p">₹389 / ₹729</span></div>
-      <div class="mi"><h3>Mutton Barra</h3><span class="p">₹349 / ₹699</span></div>
-    </div>
-
-    <div class="menu-cat-title">MAIN COURSE (VEG)</div>
-    <div class="menu-grid">
-      <div class="mi"><h3>Dal Tadka</h3><span class="p">₹149</span></div>
-      <div class="mi"><h3>Mushroom Do Pyaza</h3><span class="p">₹269</span></div>
-      <div class="mi"><h3>Paneer Do Pyaza</h3><span class="p">₹269</span></div>
-      <div class="mi"><h3>Paneer Butter Masala</h3><span class="p">₹269</span></div>
-      <div class="mi"><h3>Paneer Kadai</h3><span class="p">₹269</span></div>
-      <div class="mi"><h3>Mutter Paneer</h3><span class="p">₹259</span></div>
-      <div class="mi"><h3>Paneer Handi</h3><span class="p">₹259</span></div>
-      <div class="mi"><h3>Paneer Masala</h3><span class="p">₹259</span></div>
-      <div class="mi"><h3>Paneer Pasanda</h3><span class="p">₹279</span></div>
-      <div class="mi"><h3>Dal Makhani</h3><span class="p">₹199</span></div>
-      <div class="mi"><h3>Mix Veg</h3><span class="p">₹239</span></div>
-    </div>
-
-    <div class="menu-cat-title">RICE, BREADS & ROLLS</div>
-    <div class="menu-grid">
-      <div class="mi"><h3>Veg Fried Rice</h3><span class="p">₹149</span></div>
-      <div class="mi"><h3>Chicken Fried Rice</h3><span class="p">₹179</span></div>
-      <div class="mi"><h3>Egg Fried Rice</h3><span class="p">₹159</span></div>
-      <div class="mi"><h3>Paneer Fried Rice</h3><span class="p">₹169</span></div>
-      <div class="mi"><h3>Jeera Rice</h3><span class="p">₹119</span></div>
-      <div class="mi"><h3>Steam Rice</h3><span class="p">₹99</span></div>
-      <div class="mi"><h3>Tandoori Roti / Butter Roti</h3><span class="p">₹20 / ₹25</span></div>
-      <div class="mi"><h3>Naan / Butter Naan</h3><span class="p">₹40 / ₹50</span></div>
-      <div class="mi"><h3>Garlic Naan</h3><span class="p">₹70</span></div>
-      <div class="mi"><h3>Lachha Paratha</h3><span class="p">₹45</span></div>
-      <div class="mi"><h3>Stuff Paratha</h3><span class="p">₹79</span></div>
-      <div class="mi"><h3>Stuff Kulcha</h3><span class="p">₹79</span></div>
-      <div class="mi"><h3>Chicken Shawarma</h3><span class="p">₹99</span></div>
-      <div class="mi"><h3>Chicken Tikka Roll</h3><span class="p">₹129</span></div>
-      <div class="mi"><h3>Malai Tikka Roll</h3><span class="p">₹139</span></div>
-      <div class="mi"><h3>Paneer Tikka Roll</h3><span class="p">₹119</span></div>
-      <div class="mi"><h3>Egg Roll</h3><span class="p">₹89</span></div>
-    </div>
-
-    <div class="menu-cat-title">SOUPS, NOODLES & TEA</div>
-    <div class="menu-grid">
-      <div class="mi"><h3>Veg Soup</h3><span class="p">₹119</span></div>
-      <div class="mi"><h3>Veg Manchow Soup</h3><span class="p">₹129</span></div>
-      <div class="mi"><h3>Chicken Soup</h3><span class="p">₹139</span></div>
-      <div class="mi"><h3>Chicken Manchow Soup</h3><span class="p">₹149</span></div>
-      <div class="mi"><h3>Chicken Hot & Sour Soup</h3><span class="p">₹149</span></div>
-      <div class="mi"><h3>Veg Noodles</h3><span class="p">₹129</span></div>
-      <div class="mi"><h3>Chicken Noodles</h3><span class="p">₹169</span></div>
-      <div class="mi"><h3>Egg Noodles</h3><span class="p">₹149</span></div>
-      <div class="mi"><h3>Paneer Noodles</h3><span class="p">₹159</span></div>
-      <div class="mi"><h3>Normal Tea / Kulhad Tea</h3><span class="p">₹15 / ₹20</span></div>
-      <div class="mi"><h3>Kashmiri Tea / Masala Tea</h3><span class="p">₹25 / ₹30</span></div>
-      <div class="mi"><h3>Adrak Tea / Coffee</h3><span class="p">₹20 / ₹45</span></div>
-    </div>
-
-    <div class="menu-cat-title">BEVERAGES & DESSERTS</div>
-    <div class="menu-grid">
-      <div class="mi"><h3>Fresh Lime Soda</h3><span class="p">₹79</span></div>
-      <div class="mi"><h3>Cold Drinks (500ml)</h3><span class="p">MRP</span></div>
-      <div class="mi"><h3>Mineral Water (1L)</h3><span class="p">MRP</span></div>
-      <div class="mi"><h3>Chocolate Shake</h3><span class="p">₹129</span></div>
-      <div class="mi"><h3>Cold Coffee with Ice Cream</h3><span class="p">₹149</span></div>
-      <div class="mi"><h3>Gulab Jamun (2 Pcs)</h3><span class="p">₹60</span></div>
-    </div>
-
-  </div>
-</section>
-
-<section id="reviews">
-  <div class="wrap">
-    <div class="shead">
-      <div class="kicker">Google Reviews</div>
-      <h2>What People Say</h2>
-    </div>
-    <div class="rv-grid">
-      <div class="rv">
-        <div class="stars">★★★★☆</div>
-        <p>"Best Mandi in Darbhanga! The rice quality and chicken tenderness are unmatched. Great family place."</p>
-        <b>— Md. Sahil</b>
-      </div>
-      <div class="rv">
-        <div class="stars">★★★★☆</div>
-        <p>"Tandoori items are super juicy. Really loved the service and atmosphere at Khan Chowk."</p>
-        <b>— Rahul Verma</b>
-      </div>
-      <div class="rv">
-        <div class="stars">★★★★☆</div>
-        <p>"Authentic Arabic taste. Clean hygiene and very reasonable pricing for the quantity."</p>
-        <b>— Afzal Hussain</b>
+      <div class="stat-card">
+        <div class="stat-num">4.0★</div>
+        <div class="stat-lbl">Google Rating</div>
       </div>
     </div>
   </div>
-</section>
 
-<section id="contact">
-  <div class="wrap ct-grid">
-    <div>
-      <div class="kicker">Visit Us</div>
-      <h2 style="margin-bottom:15px;">Location & Hours</h2>
-      <div class="crow">
-        <b>Contact Number</b>
-        <span><a href="tel:6272357469">+91 6272357469</a></span>
+  <!-- BOOK YOUR TABLE & MENU SECTION -->
+  <div class="wrap" id="booking">
+    <div class="booking-card">
+      <h2>🪑 Book Your Table & Pre-Order</h2>
+      <p>Sare items select karein aur direct WhatsApp par booking confirm karein!</p>
+
+      <div id="menu-container"></div>
+
+      <div class="sticky-order-bar">
+        <div class="total-text">Total Bill: <span class="total-amount" id="grand-total">₹0</span></div>
+        <button class="btn-order-whatsapp" onclick="sendOrderWhatsApp()">
+          📱 Confirm & Order on WhatsApp
+        </button>
       </div>
-      <div class="crow">
-        <b>Social Media</b>
-        <span>
-          <a href="https://www.instagram.com/foodies._.park?stkn=MWQxdmp2YjRzaDd4OA==" target="_blank">Instagram</a> | 
-          <a href="https://youtube.com/@hamidhasan-u9w?si=atQCzjcyVGzymrCV" target="_blank">YouTube Channel</a
+    </div>
+
+    <!-- LOCATION & HOURS -->
+    <div class="info-sec">
+      <h3>Visit Us</h3>
+      <div class="info-item"><b>Contact Number:</b><br><a href="tel:+916272357469" style="color:var(--accent);">+91 6272357469</a></div>
+      <div class="info-item"><b>Address:</b><br>Foodies Park, Khan Chowk, Near Tower, Darbhanga - 846004</div>
+      <div class="info-item"><b>Opening Hours:</b><br>Monday - Sunday: 11:00 AM - 10:30 PM</div>
+      <a href="https://maps.google.com" target="_blank" class="btn-action" style="width:100%; text-align:center; justify-content:center; margin-top:10px;">📍 Open Location Map</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <p>© 2026 Foodies Park Darbhanga. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/916272357469?text=Hello%20Foodies%20Park!%20I%20want%20to%20book%20a%20table." class="whatsapp-float" target="_blank">
+    <svg viewBox="0 0 32 32">
+      <path d="M16 2a13 13 0 0 0-11 19.8L3 29l7.3-1.9A13 13 0 1 0 16 2zm0 23.8a10.8 10.8 0 0 1-5.5-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4A10.8 10.8 0 1 1 16 25.8zm5.9-8.1c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a9 9 0 0 1-2.6-1.6 10 10 0 0 1-1.8-2.2c-.2-.3 0-.5.1-.7l.5-.6c.1-.2.2-.4.3-.5a.4.4 0 0 0 0-.4c-.1-.2-.7-1.7-1-2.3s-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.8 6.4 6.4 0 0 0 1.3 3.4A14.6 14.6 0 0 0 15 21.3a17 17 0 0 0 3.3 1.2 4 4 0 0 0 1.9.1 3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.4-.2-.7-.4z"/>
+    </svg>
+    <span>Order on WhatsApp</span>
+  </a>
+
+  <!-- DYNAMIC MENU & ORDER SCRIPT -->
+  <script>
+    const menuData = [
+      {
+        category: "Starters & Fast Food",
+        items: [
+          { id: "cm", name: "Chicken Manchurian", price: 279 },
+          { id: "pc", name: "Paneer Chilli", price: 260 },
+          { id: "p65", name: "Paneer 65", price: 265 },
+          { id: "cl", name: "Chicken Lollipop", price: 299 },
+          { id: "doh", name: "Drum of Heaven", price: 319 },
+          { id: "bcc", name: "Baby Corn Chilli", price: 240 },
+          { id: "mc", name: "Mushroom Chilli", price: 249 },
+          { id: "pp", name: "Paneer Pakoda", price: 249 },
+          { id: "cp_h", name: "Chicken Pakoda (Half)", price: 249 },
+          { id: "cp_f", name: "Chicken Pakoda (Full)", price: 479 },
+          { id: "cw", name: "Chicken Wings", price: 300 }
+        ]
+      },
+      {
+        category: "Arabian Mandi",
+        items: [
+          { id: "cm_h", name: "Chicken Mandi (Half)", price: 529 },
+          { id: "cm_f", name: "Chicken Mandi (Full)", price: 999 },
+          { id: "cjm_h", name: "Chicken Juicy Mandi (Half)", price: 549 },
+          { id: "cjm_f", name: "Chicken Juicy Mandi (Full)", price: 1049 },
+          { id: "mm_h", name: "Mutton Mandi (Half)", price: 699 },
+          { id: "mm_f", name: "Mutton Mandi (Full)", price: 1349 },
+          { id: "mjm_h", name: "Mutton Juicy Mandi (Half)", price: 749 },
+          { id: "mjm_f", name: "Mutton Juicy Mandi (Full)", price: 1449 },
+          { id: "afm_h", name: "Al-Faham Mandi (Half)", price: 549 },
+          { id: "afm_f", name: "Al-Faham Mandi (Full)", price: 1049 },
+          { id: "emr", name: "Extra Mandi Rice", price: 199 },
+          { id: "ec_h", name: "Extra Chicken (Half)", price: 120 },
+          { id: "ec_f", name: "Extra Chicken (Full)", price: 239 }
+        ]
+      },
+      {
+        category: "Tandoori & Kebabs",
+        items: [
+          { id: "tc_h", name: "Tandoori Chicken (Half)", price: 269 },
+          { id: "tc_f", name: "Tandoori Chicken (Full)", price: 489 },
+          { id: "ct", name: "Chicken Tikka", price: 299 },
+          { id: "ac_h", name: "Afghani Chicken (Half)", price: 299 },
+          { id: "ac_f", name: "Afghani Chicken (Full)", price: 539 },
+          { id: "pts", name: "Paneer Tikka Sharik", price: 299 },
+          { id: "pmt", name: "Paneer Malai Tikka", price: 349 },
+          { id: "cb_h", name: "Chicken Boti (Half)", price: 299 },
+          { id: "cb_f", name: "Chicken Boti (Full)", price: 549 },
+          { id: "ck_h", name: "Chicken Kasturi (Half)", price: 329 },
+          { id: "ck_f", name: "Chicken Kasturi (Full)", price: 569 },
+          { id: "tk_h", name: "Tangdi Kebab (Half)", price: 299 },
+          { id: "tk_f", name: "Tangdi Kebab (Full)", price: 549 },
+          { id: "afc_h", name: "Al-Faham Chicken (Half)", price: 299 },
+          { id: "afc_f", name: "Al-Faham Chicken (Full)", price: 549 },
+          { id: "mc_h", name: "Makkhani Chicken (Half)", price: 319 },
+          { id: "mc_f", name: "Makkhani Chicken (Full)", price: 569 }
+        ]
+      },
+      {
+        category: "Main Course (Chicken)",
+        items: [
+          { id: "cc_h", name: "Chicken Creamy (Half)", price: 329 },
+          { id: "cc_f", name: "Chicken Creamy (Full)", price: 639 },
+          { id: "ckm_h", name: "Chicken Kali Mirch (Half)", price: 349 },
+          { id: "ckm_f", name: "Chicken Kali Mirch (Full)", price: 649 },
+          { id: "cdp_h", name: "Chicken Do Pyaza (Half)", price: 329 },
+          { id: "cdp_f", name: "Chicken Do Pyaza (Full)", price: 649 },
+          { id: "tawa_h", name: "Tawa Chicken (Half)", price: 349 },
+          { id: "tawa_f", name: "Tawa Chicken (Full)", price: 649 },
+          { id: "ch_korma_h", name: "Chicken Korma (Half)", price: 329 },
+          { id: "ch_korma_f", name: "Chicken Korma (Full)", price: 629 },
+          { id: "cjg_h", name: "Chicken Jilani Giri (Half)", price: 349 },
+          { id: "cjg_f", name: "Chicken Jilani Giri (Full)", price: 649 },
+          { id: "cgz_h", name: "Chicken Changezi (Half)", price: 399 },
+          { id: "cgz_f", name: "Chicken Changezi (Full)", price: 799 },
+          { id: "clj_h", name: "Chicken Lajawab (Half)", price: 399 },
+          { id: "clj_f", name: "Chicken Lajawab (Full)", price: 799 },
+          { id: "ch_handi_h", name: "Chicken Handi (Half)", price: 349 },
+          { id: "ch_handi_f", name: "Chicken Handi (Full)", price: 699 },
+          { id: "ch_kadai_h", name: "Chicken Kadai (Half)", price: 349 },
+          { id: "ch_kadai_f", name: "Chicken Kadai (Full)", price: 699 },
+          { id: "ch_masala_h", name: "Chicken Masala (Half)", price: 349 },
+          { id: "ch_masala_f", name: "Chicken Masala (Full)", price: 699 }
+        ]
+      },
+      {
+        category: "Mutton Specials",
+        items: [
+          { id: "mk_h", name: "Mutton Kadai (Half)", price: 379 },
+          { id: "mk_f", name: "Mutton Kadai (Full)", price: 719 },
+          { id: "mrj_h", name: "Mutton Roghan Josh (Half)", price: 399 },
+          { id: "mrj_f", name: "Mutton Roghan Josh (Full)", price: 749 },
+          { id: "mdp_h", name: "Mutton Do Pyaza (Half)", price: 399 },
+          { id: "mdp_f", name: "Mutton Do Pyaza (Full)", price: 749 },
+          { id: "mkorma_h", name: "Mutton Korma (Half)", price: 399 },
+          { id: "mkorma_f", name: "Mutton Korma (Full)", price: 749 },
+          { id: "mstew_h", name: "Mutton Stew (Half)", price: 399 },
+          { id: "mstew_f", name: "Mutton Stew (Full)", price: 729 },
+          { id: "mbhuna_h", name: "Mutton Bhuna (Half)", price: 389 },
+          { id: "mbhuna_f", name: "Mutton Bhuna (Full)", price: 729 },
+          { id: "mkm_h", name: "Mutton Kali Mirch (Half)", price: 389 },
+          { id: "mkm_f", name: "Mutton Kali Mirch (Full)", price: 729 },
+          { id: "mcurry_h", name: "Mutton Curry (Half)", price: 389 },
+          { id: "mcurry_f", name: "Mutton Curry (Full)", price: 729 }
+        ]
+      },
+      {
+        category: "Veg Delights",
+        items: [
+          { id: "mdp_veg", name: "Mushroom Do Pyaza", price: 269 },
+          { id: "pdp_veg", name: "Paneer Do Pyaza", price: 269 },
+          { id: "pbm", name: "Paneer Butter Masala", price: 269 },
+          { id: "pk", name: "Paneer Kadai", price: 269 },
+          { id: "mp", name: "Mutter Paneer", price: 259 },
+          { id: "ph", name: "Paneer Handi", price: 259 },
+          { id: "pmasala", name: "Paneer Masala", price: 259 },
+          { id: "ppasanda", name: "Paneer Pasanda", price: 279 },
+          { id: "dm", name: "Dal Makhani", price: 199 },
+          { id: "mv", name: "Mix Veg", price: 239 }
+        ]
+      },
+      {
+        category: "Breads, Rice & Rolls",
+        items: [
+          { id: "pfr", name: "Paneer Fried Rice", price: 169 },
+          { id: "jr", name: "Jeera Rice", price: 119 },
+          { id: "sr", name: "Steam Rice", price: 99 },
+          { id: "tr_plain", name: "Tandoori Roti", price: 20 },
+          { id: "tr_butter", name: "Butter Roti", price: 25 },
+          { id: "naan_plain", name: "Plain Naan", price: 40 },
+          { id: "naan_butter", name: "Butter Naan", price: 50 },
+          { id: "gn", name: "Garlic Naan", price: 70 },
+          { id: "lp", name: "Lachha Paratha", price: 45 },
+          { id: "sp", name: "Stuff Paratha", price: 79 },
+          { id: "sk", name: "Stuff Kulcha", price: 79 },
+          { id: "cs", name: "Chicken Shawarma", price: 99 },
+          { id: "ctr", name: "Chicken Tikka Roll", price: 129 },
+          { id: "mtr", name: "Malai Tikka Roll", price: 139 },
+          { id: "ptr", name: "Paneer Tikka Roll", price: 119 },
+          { id: "er", name: "Egg Roll", price: 89 }
+        ]
+      },
+      {
+        category: "Soups, Tea & Desserts",
+        items: [
+          { id: "vs", name: "Veg Soup", price: 119 },
+          { id: "vms", name: "Veg Manchow Soup", price: 129 },
+          { id: "chs", name: "Chicken Soup", price: 139 },
+          { id: "chms", name: "Chicken Manchow Soup", price: 149 },
+          { id: "cn", name: "Chicken Noodles", price: 169 },
+          { id: "en", name: "Egg Noodles", price: 149 },
+          { id: "pn", name: "Paneer Noodles", price: 159 },
+          { id: "tea_normal", name: "Normal Tea", price: 15 },
+          { id: "tea_kulhad", name: "Kulhad Tea", price: 20 },
+          { id: "tea_kashmiri", name: "Kashmiri Tea", price: 25 },
+          { id: "tea_masala", name: "Masala Tea", price: 30 },
+          { id: "tea_adrak", name: "Adrak Tea / Coffee", price: 20 },
+          { id: "fls", name: "Fresh Lime Soda", price: 79 },
+          { id: "cs_shake", name: "Chocolate Shake", price: 129 },
+          { id: "c_ice", name: "Cold Coffee with Ice Cream", price: 149 },
+          { id: "gj_2p", name: "Gulab Jamun (2 Pcs)", price: 60 }
+        ]
+      }
+    ];
+
+    let orderState = {};
+
+    function renderMenu() {
+      const container = document.getElementById("menu-container");
+      let html = "";
+
+      menuData.forEach((cat) => {
+        html += `<div class="cat-title">${cat.category}</div><div class="item-select-list">`;
+        cat.items.forEach((item) => {
+          orderState[item.id] = { name: item.name, price: item.price, qty: 0 };
+          html += `
+            <div class="item-row">
+              <div>
+                <div class="item-name">${item.name}</div>
+                <div class="item-price">₹${item.price}</div>
+              </div>
+              <div class="qty-controls">
+                <button class="qty-btn" onclick="updateQty('${item.id}', -1)">-</button>
+                <span class="qty-val" id="qty-${item.id}">0</span>
+                <button class="qty-btn" onclick="updateQty('${item.id}', 1)">+</button>
+              </div>
+            </div>
+          `;
+        });
+        html += `</div>`;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function updateQty(id, delta) {
+      if (orderState[id].qty + delta >= 0) {
+        orderState[id].qty += delta;
+        document.getElementById(`qty-${id}`).innerText = orderState[id].qty;
+        calculateTotal();
+      }
+    }
+
+    function calculateTotal() {
+      let grandTotal = 0;
+      for (let id in orderState) {
+        grandTotal += orderState[id].price * orderState[id].qty;
+      }
+      document.getElementById("grand-total").innerText = `₹${grandTotal}`;
+    }
+
+    function sendOrderWhatsApp() {
+      let selectedItems = [];
+      let total = 0;
+
+      for (let id in orderState) {
+        if (orderState[id].qty > 0) {
+          let itemCost = orderState[id].price * orderState[id].qty;
+          selectedItems.push(`${orderState[id].name} x ${orderState[id].qty} = ₹${itemCost}`);
+          total += itemCost;
+        }
+      }
+
+      if (selectedItems.length === 0) {
+        alert("Kripya kam se kam ek item select karein (+ button dabayein)!");
+        return;
+      }
+
+      let text = `Hello Foodies Park! I want to book a table and pre-order:\n\n*Order Details:*\n- ${selectedItems.join("\n- ")}\n\n*Total Bill:* ₹${total}\n\nPlease confirm my table booking & order!`;
+
+      let url = `https://wa.me/916272357469?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    window.onload = renderMenu;
+  </script>
+
+</body>
+</html>
