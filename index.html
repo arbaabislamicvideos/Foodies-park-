@@ -130,6 +130,45 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,10,8,.95)
 .crow a{color:var(--text);text-decoration:underline}
 .map-box{border-radius:18px;border:1px solid var(--line);background:var(--card);padding:25px;text-align:center}
 
+/* FLOATING WHATSAPP BUTTON */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0px 4px 20px rgba(37, 211, 102, 0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  animation: pulseWa 2s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0px 6px 25px rgba(37, 211, 102, 0.7);
+  color: #fff;
+}
+
+.whatsapp-float svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+@keyframes pulseWa {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:30px 0;background:#070605;text-align:center}
 footer .logo{font-size:22px}
@@ -138,6 +177,7 @@ footer p{color:var(--muted);font-size:12px;margin-top:6px}
 @media(max-width:768px){
   .menu-grid,.rv-grid,.ct-grid{grid-template-columns:1fr}
   section{padding:45px 0}
+  .whatsapp-float { bottom: 20px; right: 15px; padding: 10px 16px; font-size: 13px; }
 }
 </style>
 </head>
@@ -377,34 +417,4 @@ footer p{color:var(--muted);font-size:12px;margin-top:6px}
         <b>Social Media</b>
         <span>
           <a href="https://www.instagram.com/foodies._.park?stkn=MWQxdmp2YjRzaDd4OA==" target="_blank">Instagram</a> | 
-          <a href="https://youtube.com/@hamidhasan-u9w?si=atQCzjcyVGzymrCV" target="_blank">YouTube Channel</a>
-        </span>
-      </div>
-      <div class="crow">
-        <b>Address</b>
-        <span>Foodies Park, Khan Chowk, Near Tower, Darbhanga - 846004</span>
-      </div>
-      <div class="crow">
-        <b>Opening Hours</b>
-        <span>Monday - Sunday: 11:00 AM - 10:30 PM</span>
-      </div>
-    </div>
-    <div class="map-box">
-      <h3 style="margin-bottom:8px;">Find Us On Google Maps</h3>
-      <p style="color:var(--muted); font-size:12.5px; margin-bottom:16px;">Get live directions directly to our restaurant</p>
-      <a href="https://maps.app.goo.gl/ZqESwdss1cTvxLEf7" target="_blank" class="btn">Open Location Map</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="logo">FOODIES PARK</div>
-    <p>© 2026 Foodies Park Darbhanga. All Rights Reserved.</p>
-  </div>
-</footer>
-
-<script>
-  function gotoMenu() {
-    var menu = document.getElementById('menuSection');
-    
+          <a href="https://youtube.com/@hamidhasan-u9w?si=atQCzjcyVGzymrCV" target="_blank">YouTube Channel</a
