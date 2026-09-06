@@ -9,12 +9,10 @@
   <style>
     :root {
       --bg: #0b0a08;
-      --bg2: #14120e;
       --card: #1c1914;
       --text: #f5f0e6;
       --muted: #a39887;
       --accent: #d4af37;
-      --accent-glow: rgba(212, 175, 55, 0.2);
       --green: #25d366;
     }
 
@@ -26,12 +24,23 @@
 
     .wrap { max-width: 600px; margin: 0 auto; padding: 0 16px; }
 
-    /* Welcome Banner / Splash Header */
-    .welcome-card { background: var(--card); border: 1px solid rgba(212,175,55,0.3); border-radius: 20px; text-align: center; padding: 30px 20px; margin: 20px auto; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-    .welcome-brand { font-size: 28px; font-weight: 800; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
+    /* 2-Second Welcome Splash Screen */
+    #welcome-splash {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg);
+      z-index: 99999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      transition: opacity 0.5s ease;
+    }
+    .welcome-card { background: var(--card); border: 1px solid rgba(212,175,55,0.4); border-radius: 20px; text-align: center; padding: 35px 25px; width: 100%; max-width: 380px; box-shadow: 0 10px 40px rgba(0,0,0,0.9); }
+    .welcome-brand { font-size: 30px; font-weight: 800; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; }
     .welcome-sub { font-size: 11px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
-    .welcome-title { font-size: 20px; color: #fff; margin: 15px 0 8px; font-family: 'Playfair Display', serif; }
-    .welcome-tag { font-size: 13px; font-style: italic; color: var(--muted); }
+    .welcome-title { font-size: 22px; color: #fff; margin: 18px 0 8px; font-family: 'Playfair Display', serif; }
+    .welcome-tag { font-size: 13px; font-style: italic; color: var(--muted); line-height: 1.4; }
 
     /* Header Nav */
     .header-nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(212,175,55,0.15); margin-bottom: 25px; }
@@ -47,8 +56,8 @@
     .hero-desc { font-size: 14px; color: #c4b9a8; line-height: 1.6; margin-bottom: 20px; }
     
     .hero-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .btn-gold { background: var(--accent); color: #000; padding: 12px 22px; border-radius: 25px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; }
-    .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 12px 22px; border-radius: 25px; font-weight: 600; font-size: 13px; cursor: pointer; }
+    .btn-gold { background: var(--accent); color: #000; padding: 12px 22px; border-radius: 25px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
+    .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 12px 22px; border-radius: 25px; font-weight: 600; font-size: 13px; cursor: pointer; text-decoration: none; display: inline-block; }
 
     /* Stats Grid */
     .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 30px 0; text-align: center; }
@@ -66,7 +75,7 @@
     .menu-item-name { font-size: 15px; font-weight: 600; color: var(--text); }
     .menu-item-price { font-size: 14px; font-weight: 700; color: var(--accent); font-family: 'Playfair Display', serif; }
 
-    /* Testimonials */
+    /* Reviews */
     .review-card { background: var(--card); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; padding: 16px; margin-bottom: 12px; }
     .stars { color: var(--accent); font-size: 12px; margin-bottom: 6px; }
     .review-text { font-size: 13px; color: #c4b9a8; font-style: italic; margin-bottom: 8px; line-height: 1.5; }
@@ -79,46 +88,28 @@
     .info-row b { color: var(--text); display: block; margin-bottom: 2px; }
     .info-row a { color: var(--accent); text-decoration: underline; }
 
-    .map-btn { background: var(--accent); color: #000; width: 100%; border: none; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 14px; margin-top: 10px; cursor: pointer; text-align: center; display: block; }
+    .map-btn { background: var(--accent); color: #000; width: 100%; border: none; padding: 14px; border-radius: 12px; font-weight: 700; font-size: 14px; margin-top: 10px; cursor: pointer; text-align: center; display: block; text-decoration: none; }
 
     /* Footer */
     footer { text-align: center; padding: 25px 0; font-size: 12px; color: var(--muted); border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px; }
 
     /* Floating WhatsApp Button */
-    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: var(--green); color: #fff; border-radius: 50px; padding: 12px 18px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0,0.6); z-index: 999; display: flex; align-items: center; gap: 8px; }
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: var(--green); color: #fff; border-radius: 50px; padding: 12px 18px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0,0.6); z-index: 999; display: flex; align-items: center; gap: 8px; text-decoration: none; }
     .whatsapp-float svg { width: 20px; height: 20px; fill: currentColor; }
-
-    /* POPUP MODAL FOR BOOK TABLE & ORDER */
-    .modal-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); z-index: 10000; justify-content: center; align-items: flex-end; }
-    .modal-box { background: var(--card); border: 1px solid var(--accent); border-top-left-radius: 20px; border-top-right-radius: 20px; width: 100%; max-width: 600px; max-height: 85vh; padding: 20px; overflow-y: auto; position: relative; box-shadow: 0 -10px 30px rgba(0,0,0,0.9); }
-    .modal-close { position: absolute; top: 15px; right: 20px; font-size: 26px; color: var(--muted); cursor: pointer; }
-    .modal-title { font-size: 22px; color: var(--accent); text-align: center; margin-bottom: 4px; }
-    .modal-desc { font-size: 12px; color: var(--muted); text-align: center; margin-bottom: 20px; }
-
-    .pop-cat { font-size: 13px; color: var(--accent); border-bottom: 1px dashed rgba(212,175,55,0.3); padding-bottom: 4px; margin: 18px 0 10px; text-transform: uppercase; letter-spacing: 1px; }
-    .pop-row { display: flex; justify-content: space-between; align-items: center; background: var(--bg2); padding: 10px 12px; border-radius: 8px; margin-bottom: 8px; }
-    .pop-name { font-size: 13px; font-weight: 600; color: var(--text); }
-    .pop-price { font-size: 12px; color: var(--accent); margin-top: 2px; }
-
-    .pop-qty-box { display: flex; align-items: center; gap: 6px; background: #2a251d; padding: 3px 6px; border-radius: 15px; }
-    .p-btn { background: var(--accent); color: #000; border: none; width: 22px; height: 22px; border-radius: 50%; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-    .p-val { font-size: 12px; font-weight: 700; min-width: 14px; text-align: center; }
-
-    .modal-sticky-footer { position: sticky; bottom: -20px; background: var(--card); padding: 12px 0 5px; border-top: 1px solid rgba(212,175,55,0.2); margin-top: 15px; }
-    .total-line { display: flex; justify-content: space-between; font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-    .btn-wa-confirm { background: var(--green); color: #fff; border: none; width: 100%; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
   </style>
 </head>
 <body>
 
-  <div class="wrap">
+  <div id="welcome-splash">
     <div class="welcome-card">
       <div class="welcome-brand">Foodies Park</div>
       <div class="welcome-sub">Darbhanga • Khan Chowk</div>
       <div class="welcome-title">Welcome</div>
       <div class="welcome-tag">"Experience Authentic Arabian Mandi & Tandoori Specials"</div>
     </div>
+  </div>
 
+  <div class="wrap">
     <div class="header-nav">
       <div class="header-logo">
         FOODIES PARK
@@ -135,7 +126,7 @@
       <div class="hero-title">Authentic Mandi & Tandoor</div>
       <div class="hero-desc">From slow-cooked Arabic-style Mandi to smoky tandoor kebabs and rich handi gravies — Foodies Park serves flavours the whole city talks about.</div>
       <div class="hero-actions">
-        <button class="btn-gold" onclick="openBookingModal()">🪑 Book Your Table</button>
+        <a href="https://wa.me/916272357469?text=Hello%20Foodies%20Park!%20I%20want%20to%20book%20a%20table." target="_blank" class="btn-gold">🪑 Book Your Table</a>
         <a href="https://maps.google.com" target="_blank" class="btn-outline">Get Directions</a>
       </div>
     </div>
@@ -241,7 +232,7 @@
     <div class="menu-item-card"><span class="menu-item-name">Chicken Tikka Roll</span><span class="menu-item-price">₹129</span></div>
     <div class="menu-item-card"><span class="menu-item-name">Malai Tikka Roll</span><span class="menu-item-price">₹139</span></div>
     <div class="menu-item-card"><span class="menu-item-name">Paneer Tikka Roll</span><span class="menu-item-price">₹119</span></div>
-<div class="menu-item-card"><span class="menu-item-name">Egg Roll</span><span class="menu-item-price">₹89</span></div>
+    <div class="menu-item-card"><span class="menu-item-name">Egg Roll</span><span class="menu-item-price">₹89</span></div>
 
     <div class="menu-cat-title">Soups, Noodles & Tea</div>
     <div class="menu-item-card"><span class="menu-item-name">Veg Soup</span><span class="menu-item-price">₹119</span></div>
@@ -258,7 +249,7 @@
     <div class="menu-cat-title">Beverages & Desserts</div>
     <div class="menu-item-card"><span class="menu-item-name">Fresh Lime Soda</span><span class="menu-item-price">₹79</span></div>
     <div class="menu-item-card"><span class="menu-item-name">Cold Drinks (500ml)</span><span class="menu-item-price">MRP</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mineral Water (1L)</span><span class="menu-item-price">MRP</span></div>
+  <div class="menu-item-card"><span class="menu-item-name">Mineral Water (1L)</span><span class="menu-item-price">MRP</span></div>
     <div class="menu-item-card"><span class="menu-item-name">Chocolate Shake</span><span class="menu-item-price">₹129</span></div>
     <div class="menu-item-card"><span class="menu-item-name">Cold Coffee with Ice Cream</span><span class="menu-item-price">₹149</span></div>
     <div class="menu-item-card"><span class="menu-item-name">Gulab Jamun (2 Pcs)</span><span class="menu-item-price">₹60</span></div>
@@ -277,16 +268,13 @@
       <div class="review-text">"Authentic Arabic taste. Clean hygiene and very reasonable pricing for the quantity."</div>
       <div class="review-author">— Afzal Hussain</div>
     </div>
+
     <div class="info-card">
       <div style="font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase;">Visit Us</div>
       <h3>Location & Hours</h3>
       <div class="info-row">
         <b>Contact Number</b>
         <a href="tel:+916272357469">+91 6272357469</a>
-      </div>
-      <div class="info-row">
-        <b>Social Media</b>
-        <a href="#">Instagram</a> | <a href="#">YouTube Channel</a>
       </div>
       <div class="info-row">
         <b>Address</b>
@@ -316,63 +304,17 @@
     <span>WhatsApp Order</span>
   </a>
 
-  <div class="modal-backdrop" id="bookingModal">
-    <div class="modal-box">
-      <span class="modal-close" onclick="closeBookingModal()">×</span>
-      <div class="modal-title">🪑 Book Your Table</div>
-      <div class="modal-desc">Sare items Half / Full options ke saath select karein</div>
-
-      <div id="pop-menu-container"></div>
-
-      <div class="modal-sticky-footer">
-        <div class="total-line">
-          <span>Total Amount:</span>
-          <span style="color: var(--accent);" id="pop-total-val">₹0</span>
-        </div>
-        <button class="btn-wa-confirm" onclick="sendWhatsAppOrder()">
-          📱 Confirm Booking on WhatsApp
-        </button>
-      </div>
-    </div>
-  </div>
-
   <script>
-    const fullMenuList = [
-      {
-        cat: "Arabian Mandi",
-        items: [
-          { id: "cm_h", name: "Chicken Mandi (Half)", price: 529 },
-          { id: "cm_f", name: "Chicken Mandi (Full)", price: 999 },
-          { id: "cjm_h", name: "Chicken Juicy Mandi (Half)", price: 549 },
-          { id: "cjm_f", name: "Chicken Juicy Mandi (Full)", price: 1049 },
-          { id: "mm_h", name: "Mutton Mandi (Half)", price: 699 },
-          { id: "mm_f", name: "Mutton Mandi (Full)", price: 1349 },
-          { id: "mjm_h", name: "Mutton Juicy Mandi (Half)", price: 749 },
-          { id: "mjm_f", name: "Mutton Juicy Mandi (Full)", price: 1449 },
-          { id: "afm_h", name: "Al-Faham Mandi (Half)", price: 549 },
-          { id: "afm_f", name: "Al-Faham Mandi (Full)", price: 1049 },
-          { id: "emr", name: "Extra Mandi Rice", price: 199 }
-        ]
-      },
-      {
-        cat: "Tandoori & Kebabs",
-        items: [
-          { id: "tc_h", name: "Tandoori Chicken (Half)", price: 269 },
-          { id: "tc_f", name: "Tandoori Chicken (Full)", price: 489 },
-          { id: "ct", name: "Chicken Tikka", price: 299 },
-          { id: "ac_h", name: "Afghani Chicken (Half)", price: 299 },
-          { id: "ac_f", name: "Afghani Chicken (Full)", price: 539 },
-          { id: "pts", name: "Paneer Tikka Sharik", price: 299 },
-          { id: "pmt", name: "Paneer Malai Tikka", price: 349 },
-          { id: "cb_h", name: "Chicken Boti (Half)", price: 299 },
-          { id: "cb_f", name: "Chicken Boti (Full)", price: 549 },
-          { id: "ck_h", name: "Chicken Kasturi (Half)", price: 329 },
-          { id: "ck_f", name: "Chicken Kasturi (Full)", price: 569 },
-          { id: "tk_h", name: "Tangdi Kebab (Half)", price: 299 },
-          { id: "tk_f", name: "Tangdi Kebab (Full)", price: 549 }
-        ]
-      },
-      {
-        cat: "Main Course (Chicken)",
-        items: [
-          { id: "cc_h", name: "Chicken
+    setTimeout(function() {
+      var splash = document.getElementById('welcome-splash');
+      if (splash) {
+        splash.style.opacity = '0';
+        setTimeout(function() {
+          splash.style.display = 'none';
+        }, 500);
+      }
+    }, 2000);
+  </script>
+
+</body>
+</html>                                                                                         
