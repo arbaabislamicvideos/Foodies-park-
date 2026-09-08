@@ -17,9 +17,24 @@
     }
 
     * { margin:0; padding:0; box-sizing:border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-    html { scroll-behavior: smooth; }
+    
+    /* Responsive & Overflow Fixes */
+    html, body { 
+      width: 100%; 
+      max-width: 100%; 
+      overflow-x: hidden; 
+      scroll-behavior: smooth; 
+    }
+    
     body { background: var(--bg); color: var(--text); padding-bottom: 40px; }
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+    
+    /* Fluid Responsive Headings */
+    h1 { font-size: clamp(2rem, 5vw, 4rem); font-family: 'Playfair Display', serif; }
+    h2, h3, h4 { font-family: 'Playfair Display', serif; }
+    
+    /* Image Responsiveness */
+    img { max-width: 100%; height: auto; }
+    
     a { color: inherit; text-decoration: none; }
 
     .wrap { max-width: 900px; margin: 0 auto; padding: 0 16px; }
@@ -55,7 +70,7 @@
     .hero-title { font-size: 32px; color: var(--accent); line-height: 1.2; margin-bottom: 12px; font-weight: 700; }
     .hero-desc { font-size: 14px; color: #c4b9a8; line-height: 1.6; margin-bottom: 20px; }
     
-    .hero-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .hero-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
     .btn-gold { background: var(--accent); color: #000; padding: 12px 22px; border-radius: 25px; font-weight: 700; font-size: 13px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
     .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); padding: 12px 22px; border-radius: 25px; font-weight: 600; font-size: 13px; cursor: pointer; text-decoration: none; display: inline-block; }
 
@@ -65,13 +80,28 @@
     .stat-num { font-size: 20px; font-weight: 800; color: var(--accent); }
     .stat-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; margin-top: 4px; letter-spacing: 0.5px; }
 
-    /* Main Menu Section */
+    /* Main Menu Section & Responsive Grid */
     .section-head { text-align: center; margin: 35px 0 20px; }
     .section-head span { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
     .section-head h2 { font-size: 24px; color: var(--accent); margin-top: 4px; }
 
     .menu-cat-title { font-size: 14px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin: 25px 0 12px; font-weight: 600; }
-    .menu-item-card { background: var(--card); border: 1px solid rgba(212,175,55,0.15); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+    
+    /* 3 Columns Desktop / 1 Column Mobile */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    .menu-item-card { background: var(--card); border: 1px solid rgba(212,175,55,0.15); border-radius: 12px; padding: 14px 16px; display: flex; justify-content: space-between; align-items: center; }
     .menu-item-name { font-size: 15px; font-weight: 600; color: var(--text); }
     .menu-item-price { font-size: 14px; font-weight: 700; color: var(--accent); font-family: 'Playfair Display', serif; }
 
@@ -92,14 +122,11 @@
 
     /* Footer */
     footer { text-align: center; padding: 25px 0; font-size: 12px; color: var(--muted); border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px; }
-
-    /* Floating WhatsApp Button */
-    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: var(--green); color: #fff; border-radius: 50px; padding: 12px 18px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0,0.6); z-index: 999; display: flex; align-items: center; gap: 8px; text-decoration: none; }
-    .whatsapp-float svg { width: 20px; height: 20px; fill: currentColor; }
   </style>
 </head>
 <body>
 
+  <!-- Welcome Splash Screen -->
   <div id="welcome-splash">
     <div class="welcome-card">
       <div class="welcome-brand">Foodies Park</div>
@@ -110,32 +137,33 @@
   </div>
 
   <div class="wrap">
+    <!-- Header -->
     <div class="header-nav">
       <div class="header-logo">
         FOODIES PARK
         <span>Darbhanga</span>
       </div>
       <div class="header-btns">
-        <a href="tel:+919122993388"" class="btn-icon">📞 Call</a>
+        <a href="tel:+919122993388" class="btn-icon">📞 Call</a>
         <a href="https://maps.google.com" target="_blank" class="btn-icon">📍 Location</a>
       </div>
     </div>
 
+    <!-- Hero -->
     <div class="hero">
       <div class="hero-tag">Khan Chowk, Darbhanga</div>
-      <div class="hero-title">Authentic Mandi & Tandoor</div>
+      <h1 class="hero-title">Authentic Mandi & Tandoor</h1>
       <div class="hero-desc">From slow-cooked Arabic-style Mandi to smoky tandoor kebabs and rich handi gravies — Foodies Park serves flavours the whole city talks about.</div>
       <div class="hero-actions">
-        <a href="https://wa.me/919122993388"?text=Hello%20Foodies%20Park!%20I%20want%20to%20book%20a%20table." target="_blank" class="btn-gold">🪑 Book Your Table</a>
+        <a href="https://wa.me/919122993388?text=Hello%20Foodies%20Park!%20I%20want%20to%20book%20a%20table." target="_blank" class="btn-gold">🪑 Book Your Table</a>
         <a href="https://maps.google.com" target="_blank" class="btn-outline">Get Directions</a>
-    </div>
-  
+      </div>
       <a href="https://zomato.onelink.me/xqzv/mt5uosk9" target="_blank" class="btn-outline" style="background: #cb202d; color: #ffffff; border-color: #cb202d;">
-  Order on Zomato
-   </a>
-      
+        Order on Zomato
+      </a>
     </div>
 
+    <!-- Stats -->
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-num">150+</div>
@@ -151,137 +179,162 @@
       </div>
     </div>
 
+    <!-- Menu Title -->
     <div class="section-head">
       <span>Our Menu</span>
       <h2>Foodies Park Specialities</h2>
     </div>
 
+    <!-- Starters -->
     <div class="menu-cat-title">Starters & Fast Food</div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Manchurian</span><span class="menu-item-price">₹279</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Chilli</span><span class="menu-item-price">₹260</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer 65</span><span class="menu-item-price">₹265</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Lollipop</span><span class="menu-item-price">₹299</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Drum of Heaven</span><span class="menu-item-price">₹319</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Baby Corn Chilli</span><span class="menu-item-price">₹240</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mushroom Chilli</span><span class="menu-item-price">₹249</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Pakoda</span><span class="menu-item-price">₹249</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Pakoda</span><span class="menu-item-price">₹249 / ₹479</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Wings</span><span class="menu-item-price">₹300</span></div>
+    <div class="menu-grid">
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Manchurian</span><span class="menu-item-price">₹279</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Chilli</span><span class="menu-item-price">₹260</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer 65</span><span class="menu-item-price">₹265</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Lollipop</span><span class="menu-item-price">₹299</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Drum of Heaven</span><span class="menu-item-price">₹319</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Baby Corn Chilli</span><span class="menu-item-price">₹240</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mushroom Chilli</span><span class="menu-item-price">₹249</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Pakoda</span><span class="menu-item-price">₹249</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Pakoda</span><span class="menu-item-price">₹249 / ₹479</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Wings</span><span class="menu-item-price">₹300</span></div>
+    </div>
 
+    <!-- Arabian Mandi -->
     <div class="menu-cat-title">Arabian Mandi</div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Mandi</span><span class="menu-item-price">₹529 / ₹999</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Juicy Mandi</span><span class="menu-item-price">₹549 / ₹1049</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutton Mandi</span><span class="menu-item-price">₹699 / ₹1349</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutton Juicy Mandi</span><span class="menu-item-price">₹749 / ₹1449</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Al-Faham Mandi</span><span class="menu-item-price">₹549 / ₹1049</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Extra Mandi Rice</span><span class="menu-item-price">₹199</span></div>
+    <div class="menu-grid">
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Mandi</span><span class="menu-item-price">₹529 / ₹999</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Juicy Mandi</span><span class="menu-item-price">₹549 / ₹1049</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mutton Mandi</span><span class="menu-item-price">₹699 / ₹1349</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mutton Juicy Mandi</span><span class="menu-item-price">₹749 / ₹1449</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Al-Faham Mandi</span><span class="menu-item-price">₹549 / ₹1049</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Extra Mandi Rice</span><span class="menu-item-price">₹199</span></div>
+    </div>
 
+    <!-- Tandoori -->
     <div class="menu-cat-title">Tandoori & Kebabs</div>
-    <div class="menu-item-card"><span class="menu-item-name">Tandoori Chicken</span><span class="menu-item-price">₹269 / ₹489</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Tikka</span><span class="menu-item-price">₹299</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Afghani Chicken</span><span class="menu-item-price">₹299 / ₹539</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Tikka Sharik</span><span class="menu-item-price">₹299</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Malai Tikka</span><span class="menu-item-price">₹349</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Boti</span><span class="menu-item-price">₹299 / ₹549</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Kasturi</span><span class="menu-item-price">₹329 / ₹569</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Tangdi Kebab</span><span class="menu-item-price">₹299 / ₹549</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Al-Faham Chicken</span><span class="menu-item-price">₹299 / ₹549</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Makkhani Chicken</span><span class="menu-item-price">₹319 / ₹569</span></div>
+    <div class="menu-grid">
+      <div class="menu-item-card"><span class="menu-item-name">Tandoori Chicken</span><span class="menu-item-price">₹269 / ₹489</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Tikka</span><span class="menu-item-price">₹299</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Afghani Chicken</span><span class="menu-item-price">₹299 / ₹539</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Tikka Sharik</span><span class="menu-item-price">₹299</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Malai Tikka</span><span class="menu-item-price">₹349</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Boti</span><span class="menu-item-price">₹299 / ₹549</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Kasturi</span><span class="menu-item-price">₹329 / ₹569</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Tangdi Kebab</span><span class="menu-item-price">₹299 / ₹549</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Al-Faham Chicken</span><span class="menu-item-price">₹299 / ₹549</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Makkhani Chicken</span><span class="menu-item-price">₹319 / ₹569</span></div>
+    </div>
 
+    <!-- Main Course (Chicken) -->
     <div class="menu-cat-title">Main Course (Chicken)</div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Creamy</span><span class="menu-item-price">₹329 / ₹639</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Kali Mirch</span><span class="menu-item-price">₹349 / ₹649</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Do Pyaza</span><span class="menu-item-price">₹329 / ₹649</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Tawa Chicken</span><span class="menu-item-price">₹349 / ₹649</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Korma</span><span class="menu-item-price">₹329 / ₹629</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Jilani Giri</span><span class="menu-item-price">₹349 / ₹649</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Changezi</span><span class="menu-item-price">₹399 / ₹799</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Lajawab</span><span class="menu-item-price">₹399 / ₹799</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Handi</span><span class="menu-item-price">₹349 / ₹699</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Kadai</span><span class="menu-item-price">₹349 / ₹699</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Masala</span><span class="menu-item-price">₹349 / ₹699</span></div>
+    <div class="menu-grid">
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Creamy</span><span class="menu-item-price">₹329 / ₹639</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Kali Mirch</span><span class="menu-item-price">₹349 / ₹649</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Do Pyaza</span><span class="menu-item-price">₹329 / ₹649</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Tawa Chicken</span><span class="menu-item-price">₹349 / ₹649</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Korma</span><span class="menu-item-price">₹329 / ₹629</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Jilani Giri</span><span class="menu-item-price">₹349 / ₹649</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Changezi</span><span class="menu-item-price">₹399 / ₹799</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Lajawab</span><span class="menu-item-price">₹399 / ₹799</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Handi</span><span class="menu-item-price">₹349 / ₹699</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Kadai</span><span class="menu-item-price">₹349 / ₹699</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Masala</span><span class="menu-item-price">₹349 / ₹699</span></div>
+    </div>
 
+    <!-- Mutton Specials -->
     <div class="menu-cat-title">Mutton Specials</div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutton Kadai</span><span class="menu-item-price">₹379 / ₹719</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutton Roghan Josh</span><span class="menu-item-price">₹399 / ₹749</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutton Do Pyaza</span><span class="menu-item-price">₹399 / ₹749</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutton Korma</span><span class="menu-item-price">₹399 / ₹749</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutton Stew</span><span class="menu-item-price">₹399 / ₹729</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutton Bhuna</span><span class="menu-item-price">₹389 / ₹729</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutton Kali Mirch</span><span class="menu-item-price">₹389 / ₹729</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutton Curry</span><span class="menu-item-price">₹389 / ₹729</span></div>
+    <div class="menu-grid">
+      <div class="menu-item-card"><span class="menu-item-name">Mutton Kadai</span><span class="menu-item-price">₹379 / ₹719</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mutton Roghan Josh</span><span class="menu-item-price">₹399 / ₹749</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mutton Do Pyaza</span><span class="menu-item-price">₹399 / ₹749</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mutton Korma</span><span class="menu-item-price">₹399 / ₹749</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mutton Stew</span><span class="menu-item-price">₹399 / ₹729</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mutton Bhuna</span><span class="menu-item-price">₹389 / ₹729</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mutton Kali Mirch</span><span class="menu-item-price">₹389 / ₹729</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mutton Curry</span><span class="menu-item-price">₹389 / ₹729</span></div>
+    </div>
 
+    <!-- Veg Delights -->
     <div class="menu-cat-title">Veg Delights</div>
-    <div class="menu-item-card"><span class="menu-item-name">Mushroom Do Pyaza</span><span class="menu-item-price">₹269</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Do Pyaza</span><span class="menu-item-price">₹269</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Butter Masala</span><span class="menu-item-price">₹269</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Kadai</span><span class="menu-item-price">₹269</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mutter Paneer</span><span class="menu-item-price">₹259</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Handi</span><span class="menu-item-price">₹259</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Masala</span><span class="menu-item-price">₹259</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Pasanda</span><span class="menu-item-price">₹279</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Dal Makhani</span><span class="menu-item-price">₹199</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Mix Veg</span><span class="menu-item-price">₹239</span></div>
+    <div class="menu-grid">
+      <div class="menu-item-card"><span class="menu-item-name">Mushroom Do Pyaza</span><span class="menu-item-price">₹269</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Do Pyaza</span><span class="menu-item-price">₹269</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Butter Masala</span><span class="menu-item-price">₹269</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Kadai</span><span class="menu-item-price">₹269</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mutter Paneer</span><span class="menu-item-price">₹259</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Handi</span><span class="menu-item-price">₹259</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Masala</span><span class="menu-item-price">₹259</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Pasanda</span><span class="menu-item-price">₹279</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Dal Makhani</span><span class="menu-item-price">₹199</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mix Veg</span><span class="menu-item-price">₹239</span></div>
+    </div>
 
+    <!-- Breads, Rice & Rolls -->
     <div class="menu-cat-title">Breads, Rice & Rolls</div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Fried Rice</span><span class="menu-item-price">₹169</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Jeera Rice</span><span class="menu-item-price">₹119</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Steam Rice</span><span class="menu-item-price">₹99</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Tandoori Roti / Butter Roti</span><span class="menu-item-price">₹20 / ₹25</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Naan / Butter Naan</span><span class="menu-item-price">₹40 / ₹50</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Garlic Naan</span><span class="menu-item-price">₹70</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Lachha Paratha</span><span class="menu-item-price">₹45</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Stuff Paratha</span><span class="menu-item-price">₹79</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Stuff Kulcha</span><span class="menu-item-price">₹79</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Shawarma</span><span class="menu-item-price">₹99</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Tikka Roll</span><span class="menu-item-price">₹129</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Malai Tikka Roll</span><span class="menu-item-price">₹139</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Tikka Roll</span><span class="menu-item-price">₹119</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Egg Roll</span><span class="menu-item-price">₹89</span></div>
+    <div class="menu-grid">
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Fried Rice</span><span class="menu-item-price">₹169</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Jeera Rice</span><span class="menu-item-price">₹119</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Steam Rice</span><span class="menu-item-price">₹99</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Tandoori Roti / Butter Roti</span><span class="menu-item-price">₹20 / ₹25</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Naan / Butter Naan</span><span class="menu-item-price">₹40 / ₹50</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Garlic Naan</span><span class="menu-item-price">₹70</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Lachha Paratha</span><span class="menu-item-price">₹45</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Stuff Paratha</span><span class="menu-item-price">₹79</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Stuff Kulcha</span><span class="menu-item-price">₹79</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Shawarma</span><span class="menu-item-price">₹99</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Tikka Roll</span><span class="menu-item-price">₹129</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Malai Tikka Roll</span><span class="menu-item-price">₹139</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Tikka Roll</span><span class="menu-item-price">₹119</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Egg Roll</span><span class="menu-item-price">₹89</span></div>
+    </div>
 
+    <!-- Soups, Noodles & Tea -->
     <div class="menu-cat-title">Soups, Noodles & Tea</div>
-    <div class="menu-item-card"><span class="menu-item-name">Veg Soup</span><span class="menu-item-price">₹119</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Veg Manchow Soup</span><span class="menu-item-price">₹129</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Soup</span><span class="menu-item-price">₹139</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Manchow Soup</span><span class="menu-item-price">₹149</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chicken Noodles</span><span class="menu-item-price">₹169</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Egg Noodles</span><span class="menu-item-price">₹149</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Paneer Noodles</span><span class="menu-item-price">₹159</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Normal Tea / Kulhad Tea</span><span class="menu-item-price">₹15 / ₹20</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Kashmiri Tea / Masala Tea</span><span class="menu-item-price">₹25 / ₹30</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Adrak Tea / Coffee</span><span class="menu-item-price">₹20 / ₹45</span></div>
+    <div class="menu-grid">
+      <div class="menu-item-card"><span class="menu-item-name">Veg Soup</span><span class="menu-item-price">₹119</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Veg Manchow Soup</span><span class="menu-item-price">₹129</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Soup</span><span class="menu-item-price">₹139</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Manchow Soup</span><span class="menu-item-price">₹149</span></div>        
+      <div class="menu-item-card"><span class="menu-item-name">Chicken Noodles</span><span class="menu-item-price">₹169</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Egg Noodles</span><span class="menu-item-price">₹149</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Paneer Noodles</span><span class="menu-item-price">₹159</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Normal Tea / Kulhad Tea</span><span class="menu-item-price">₹15 / ₹20</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Kashmiri Tea / Masala Tea</span><span class="menu-item-price">₹25 / ₹30</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Adrak Tea / Coffee</span><span class="menu-item-price">₹20 / ₹45</span></div>
+    </div>
 
+    <!-- Beverages & Desserts -->
     <div class="menu-cat-title">Beverages & Desserts</div>
-    <div class="menu-item-card"><span class="menu-item-name">Fresh Lime Soda</span><span class="menu-item-price">₹79</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Cold Drinks (500ml)</span><span class="menu-item-price">MRP</span></div>
-  <div class="menu-item-card"><span class="menu-item-name">Mineral Water (1L)</span><span class="menu-item-price">MRP</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Chocolate Shake</span><span class="menu-item-price">₹129</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Cold Coffee with Ice Cream</span><span class="menu-item-price">₹149</span></div>
-    <div class="menu-item-card"><span class="menu-item-name">Gulab Jamun (2 Pcs)</span><span class="menu-item-price">₹60</span></div>
+    <div class="menu-grid">
+      <div class="menu-item-card"><span class="menu-item-name">Fresh Lime Soda</span><span class="menu-item-price">₹79</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Cold Drinks (500ml)</span><span class="menu-item-price">MRP</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Mineral Water (1L)</span><span class="menu-item-price">MRP</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Chocolate Shake</span><span class="menu-item-price">₹129</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Cold Coffee with Ice Cream</span><span class="menu-item-price">₹149</span></div>
+      <div class="menu-item-card"><span class="menu-item-name">Gulab Jamun (2 Pcs)</span><span class="menu-item-price">₹60</span></div>
+    </div>
 
-    <div class="section-head">
-
-
+    <!-- Location & Info Card -->
     <div class="info-card">
       <div style="font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase;">Visit Us</div>
       <h3>Location & Hours</h3>
       <div class="info-row">
         <b>Contact Number</b>
-        <a href="tel:++919122993388">+91 9122993388"</a>
+        <a href="tel:+919122993388">+91 9122993388</a>
       </div>
-            <div class="info-row">
+      <div class="info-row">
         <b>Email Address</b>
         <a href="mailto:hamid.hasan1988@gmail.com">hamid.hasan1988@gmail.com</a>
-            </div>
-            <div class="info-row">
+      </div>
+      <div class="info-row">
         <b>Social Media</b>
         <a href="https://www.instagram.com/hamid.hasan.06" target="_blank">Instagram (@hamid.hasan.06)</a>
-            </div>
-            <div class="info-row">
+      </div>
+      <div class="info-row">
         <b>YouTube Channel</b>
         <a href="https://youtube.com/@hamidhasan-u9w" target="_blank">YouTube (@hamidhasan-u9w)</a>
-            </div>
-      
+      </div>
       <div class="info-row">
         <b>Address</b>
         Foodies Park, Khan Chowk, Near Tower, Darbhanga - 846004
@@ -290,12 +343,12 @@
         <b>Opening Hours</b>
         Monday - Sunday: 11:00 AM - 10:30 PM
       </div>
-
       <a href="https://maps.google.com" target="_blank" class="map-btn">📍 Open Location Map</a>
     </div>
 
   </div>
 
+  <!-- Footer -->
   <footer>
     <div class="wrap">
       <div style="font-size: 18px; font-weight: 800; color: var(--accent); margin-bottom: 4px;">FOODIES PARK</div>
@@ -303,13 +356,7 @@
     </div>
   </footer>
 
-  <a href=https://wa.me/919122993388?text=Hello%20Foodies%20Park,%20I%20want%20to%20book%20a%20table." class="whatsapp-float"> target="_blank">
-    <svg viewBox="0 0 32 32">
-      <path d="M16 2a13 13 0 0 0-11 19.8L3 29l7.3-1.9A13 13 0 1 0 16 2zm0 23.8a10.8 10.8 0 0 1-5.5-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4A10.8 10.8 0 1 1 16 25.8zm5.9-8.1c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a9 9 0 0 1-2.6-1.6 10 10 0 0 1-1.8-2.2c-.2-.3 0-.5.1-.7l.5-.6c.1-.2.2-.4.3-.5a.4.4 0 0 0 0-.4c-.1-.2-.7-1.7-1-2.3s-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.8 6.4 6.4 0 0 0 1.3 3.4A14.6 14.6 0 0 0 15 21.3a17 17 0 0 0 3.3 1.2 4 4 0 0 0 1.9.1 3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.1-.4-.2-.7-.4z"/>
-    </svg>
-    <span>WhatsApp Order</span>
-  </a>
-
+  <!-- Splash Screen Auto-Hide Script -->
   <script>
     setTimeout(function() {
       var splash = document.getElementById('welcome-splash');
@@ -323,4 +370,4 @@
   </script>
 
 </body>
-</html>                                                                                         
+</html>
