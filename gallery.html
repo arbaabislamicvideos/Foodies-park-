@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Foodies Park Darbhanga</title>
+  <style>
+    :root {
+      --bg: #0b0a08;
+      --card: #1c1914;
+      --text: #f5f0e6;
+      --accent: #d4af37;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 20px 15px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(212,175,55,0.2);
+      margin-bottom: 30px;
+    }
+    .back-btn {
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .title-area {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .title-area h1 {
+      color: var(--accent);
+      margin: 0 0 8px 0;
+      font-size: 1.8rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .gallery-card {
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,0.2);
+    }
+    .gallery-card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-card p {
+      padding: 12px;
+      text-align: center;
+      color: #ddd;
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="index.html" class="back-btn">⬅ Home</a>
+    <span style="color: var(--accent); font-weight: 600;">FOODIES PARK</span>
+  </div>
+
+  <div class="title-area">
+    <h1>Our Ambiance & Seating</h1>
+    <p style="color: #a39887; margin: 0; font-size: 0.9rem;">Experience Luxury Dining & Arabic Mandi Setup</p>
+  </div>
+
+  <div class="gallery-grid">
+    
+    <div class="gallery-card">
+      <img src="6378.jpg" alt="Main Dining Hall">
+      <p>Main Dining Hall</p>
+    </div>
+
+    <div class="gallery-card">
+      <img src="6379.jpg" alt="Ceiling Ambiance">
+      <p>Luxury Lighting & Ceiling</p>
+    </div>
+
+    <div class="gallery-card">
+      <img src="6380.jpg" alt="Mandi Cabins">
+      <p>Private Mandi Cabins</p>
+    </div>
+
+    <div class="gallery-card">
+      <img src="6381.jpg" alt="Arabic Floor Seating">
+      <p>Arabic Floor Seating (Mandi)</p>
+    </div>
+
+    <div class="gallery-card">
+      <img src="6382.jpg" alt="VIP Sofa Booth">
+      <p>VIP Booth Seating</p>
+    </div>
+
+    <div class="gallery-card">
+      <img src="6384.jpg" alt="Family Dining Area">
+      <p>Family Dining Area</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
