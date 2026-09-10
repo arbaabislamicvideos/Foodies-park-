@@ -32,15 +32,18 @@ a { text-decoration: none; color: inherit; display: inline-block; }
   inset: 0;
   background: rgba(0, 0, 0, 0.95);
   z-index: 9999;
-  display: none !important;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  transition: opacity 0.6s ease, visibility 0.6s;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  opacity: 1;
+  visibility: visible;
 }
 #welcomeOverlay.hide {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 .welcome-card {
   background: #151310;
@@ -231,8 +234,8 @@ footer p { color: var(--muted); font-size: 11.5px; }
       <p style="text-align:center; color:var(--muted); font-size:11.5px;">Slow Cooked Rice with Signature Spices &amp; Tender Meat</p>
       
       <div class="mandi-grid">
-        <div class="mandi-item"><h4>Chicken Mandi</h4><span class="price">Half ₹549 / Full ₹999</span></div>
-        <div class="mandi-item"><h4>Chicken Juicy Mandi</h4><span class="price">Half ₹569 / Full ₹1069</span></div>
+        <div class="mandi-item"><h4>Chicken Mandi</h4><span class="price">Half ₹529 / Full ₹999</span></div>
+        <div class="mandi-item"><h4>Chicken Juicy Mandi</h4><span class="price">Half ₹549 / Full ₹1049</span></div>
         <div class="mandi-item"><h4>Mutton Mandi</h4><span class="price">Half ₹699 / Full ₹1349</span></div>
         <div class="mandi-item"><h4>Mutton Juicy Mandi</h4><span class="price">Half ₹749 / Full ₹1449</span></div>
         <div class="mandi-item" style="grid-column: 1 / -1;"><h4>Al-Faham Mandi</h4><span class="price">₹999</span></div>
@@ -257,12 +260,11 @@ footer p { color: var(--muted); font-size: 11.5px; }
       <button class="cat-link" onclick="scrollToSec('cat-rice')">Rice &amp; Roti</button>
       <button class="cat-link" onclick="scrollToSec('cat-rolls')">Rolls &amp; Soups</button>
       <button class="cat-link" onclick="scrollToSec('cat-chinese')">Noodles &amp; Tea</button>
+      <button class="cat-link" onclick="scrollToSec('cat-pizza-burger')">Pizza &amp; Burger</button>
+      <button class="cat-link" onclick="scrollToSec('cat-sandwich')">Sandwich</button>
+      <button class="cat-link" onclick="scrollToSec('cat-sweets-icecream')">Sweets &amp; Ice Cream</button>
+      <button class="cat-link" onclick="scrollToSec('cat-beverages')">Chillers &amp; Shakes</button>
       <button class="cat-link" onclick="scrollToSec('cat-extras')">Extras</button>
-  <button class="cat-link" onclick="scrollToSec('cat-pizza-burger')">Pizza & Burger</button>
-<button class="cat-link" onclick="scrollToSec('cat-sandwich')">Sandwich</button>
-<button class="cat-link" onclick="scrollToSec('cat-sweets-icecream')">Sweets & Ice Cream</button>
-<button class="cat-link" onclick="scrollToSec('cat-beverages')">Chillers & Shakes</button>
-      
     </div>
 
     <!-- ALL MENU ITEMS -->
@@ -310,92 +312,90 @@ const MENU_DATA = [
     id: "cat-starter",
     title: "Starter",
     items: [
-      {name:"Chicken 65", price:"₹269"},
-      {name:"Chicken Chilli - Dry", price:"₹269"},
-      {name:"Chicken Chilli - Gravy", price:"₹279"},
-      {name:"Chicken Manchurian", price:"₹299"},
-      {name:"Paneer Chilli - Dry", price:"₹280"},
-      {name:"Paneer Chilli - Gravy", price:"₹290"},
-      {name:"Paneer 65", price:"₹285"},
-      {name:"Chicken Lollipop", price:"₹319"},
-      {name:"Chicken Fry", price:"₹039"},
-      {name:"Crispy Chicken", price:"₹269"},
-      {name:"Chicken Pakoda", price:"₹269"},
-      {name:"Chicken Golden Fry", price:"₹269"},
-      {name:"Chicken Popcorn", price:"₹269 / ₹519"},
-      {name:"Chicken Wings", price:"₹319"}
+      {name:"Chicken 65", price:"₹249"},
+      {name:"Chicken Chilli", price:"₹249"},
+      {name:"Chicken Manchurian", price:"₹279"},
+      {name:"Paneer Chilli", price:"₹260"},
+      {name:"Paneer 65", price:"₹265"},
+      {name:"Chicken Lollipop", price:"₹299"},
+      {name:"Drums Of Heaven", price:"₹319"},
+      {name:"Baby Corn", price:"₹249"},
+      {name:"Mushroom Chilli", price:"₹249"},
+      {name:"Paneer Pakoda", price:"₹249"},
+      {name:"Chicken Pakoda", price:"Half ₹249 / Full ₹499"},
+      {name:"Chicken Wings", price:"₹299"}
     ]
   },
   {
     id: "cat-tandoor",
     title: "Tandoor",
     items: [
-      {name:"Chicken Seekh Kabab", price:"₹99"},
-      {name:"Tandoori Chicken", price:"Half ₹239 / Full ₹439"},
+      {name:"Chicken Seekh Kebab", price:"₹99"},
+      {name:"Tandoori Chicken", price:"Half ₹220 / Full ₹430"},
       {name:"Chicken Tikka", price:"₹399"},
-      {name:"Afghani Chicken", price:"Half ₹249 / Full ₹479"},
-      {name:"Paneer Tikka Shashlik", price:"₹369"},
+      {name:"Afghani Chicken", price:"Half ₹239 / Full ₹469"},
+      {name:"Paneer Tikka Shashlik", price:"₹349"},
       {name:"Paneer Malai Tikka", price:"₹399"},
-      {name:"Chicken Barra", price:"Half ₹249 / Full ₹469"},
-      {name:"Chicken Peshawri", price:"Half ₹319 / Full ₹619"},
-      {name:"Tangri Kabab", price:"Half ₹259 / Full ₹499"},
+      {name:"Chicken Barra", price:"Half ₹239 / Full ₹460"},
+      {name:"Chicken Peshawri", price:"Half ₹299 / Full ₹599"},
+      {name:"Tangri Kebab", price:"Half ₹249 / Full ₹499"},
       {name:"Al-Faham Chicken", price:"₹599"},
-      {name:"Makhani Chicken", price:"Half ₹269 / Full ₹519"},
-      {name:"Extra Cream", price:"₹69"}
+      {name:"Chicken Makhani", price:"Half ₹259 / Full ₹499"},
+      {name:"Extra Cream", price:"₹49"}
     ]
   },
   {
     id: "cat-mutton",
     title: "Mutton Main Course",
     items: [
-      {name:"Mutton Kadhai", price:"Half ₹389 / Full ₹769"},
+      {name:"Mutton Kadhai", price:"Half ₹379 / Full ₹759"},
       {name:"Mutton Handi", price:"Half ₹399 / Full ₹799"},
-      {name:"Mutton Roghan Josh", price:"Half ₹409 / Full ₹809"},
-      {name:"Mutton Korma", price:"Half ₹389 / Full ₹749"},
-      {name:"Mutton Curry", price:"Half ₹399 / Full ₹759"},
-      {name:"Mutton Bhuna", price:"Half ₹369 / Full ₹749"},
+      {name:"Mutton Roghan Josh", price:"Half ₹399 / Full ₹799"},
+      {name:"Mutton Korma", price:"Half ₹369 / Full ₹729"},
+      {name:"Mutton Curry", price:"Half ₹389 / Full ₹749"},
+      {name:"Mutton Bhuna", price:"Half ₹359 / Full ₹729"},
       {name:"Mutton Stew", price:"Half ₹399 / Full ₹799"},
-      {name:"Mutton Kali Mirch", price:"Half ₹409 / Full ₹809"},
+      {name:"Mutton Kali Mirch", price:"Half ₹399 / Full ₹799"},
       {name:"Mutton Barra", price:"Half ₹399 / Full ₹799"},
-      {name:"Mutton Masala", price:"Half ₹369 / Full ₹719"}
+      {name:"Mutton Masala", price:"Half ₹349 / Full ₹699"}
     ]
   },
   {
     id: "cat-chicken",
     title: "Chicken Main Course",
     items: [
-      {name:"Butter Chicken", price:"Half ₹359 / Full ₹699"},
-      {name:"Butter Chicken Boneless", price:"Half ₹395 / Full ₹765"},
-      {name:"Chicken Punjabi", price:"Half ₹379 / Full ₹719"},
-      {name:"Chicken Curry", price:"Half ₹349 / Full ₹679"},
-      {name:"Chicken Creamy", price:"Half ₹369 / Full ₹719"},
-      {name:"Chicken Kali Mirch", price:"Half ₹419 / Full ₹819"},
-      {name:"Chicken Do Payaza", price:"Half ₹349 / Full ₹669"},
-      {name:"Tava Chicken", price:"Half ₹369 / Full ₹699"},
-      {name:"Chicken Korma", price:"Half ₹349 / Full ₹669"},
-      {name:"Chicken Jahangiri", price:"Half ₹369 / Full ₹719"},
-      {name:"Chicken Changezi", price:"Half ₹419 / Full ₹819"},
-      {name:"Chicken Lawabdar", price:"Half ₹419 / Full ₹799"},
-      {name:"Chicken Handi", price:"Half ₹369 / Full ₹699"},
-      {name:"Chicken Kadhai", price:"Half ₹369 / Full ₹709"},
-      {name:"Chicken Masala", price:"Half ₹369 / Full ₹719"}
+      {name:"Butter Chicken", price:"Half ₹340 / Full ₹680"},
+      {name:"Butter Chicken Boneless", price:"Half ₹375 / Full ₹745"},
+      {name:"Chicken Punjabi", price:"Half ₹349 / Full ₹699"},
+      {name:"Chicken Curry", price:"Half ₹329 / Full ₹659"},
+      {name:"Chicken Creamy", price:"Half ₹349 / Full ₹699"},
+      {name:"Chicken Kali Mirch", price:"Half ₹399 / Full ₹799"},
+      {name:"Chicken Do Payaza", price:"Half ₹329 / Full ₹649"},
+      {name:"Tava Chicken", price:"Half ₹349 / Full ₹689"},
+      {name:"Chicken Korma", price:"Half ₹329 / Full ₹650"},
+      {name:"Chicken Jahangiri", price:"Half ₹349 / Full ₹699"},
+      {name:"Chicken Changezi", price:"Half ₹399 / Full ₹799"},
+      {name:"Chicken Lawabdar", price:"Half ₹399 / Full ₹799"},
+      {name:"Chicken Handi", price:"Half ₹349 / Full ₹699"},
+      {name:"Chicken Kadhai", price:"Half ₹349 / Full ₹699"},
+      {name:"Chicken Masala", price:"Half ₹349 / Full ₹699"}
     ]
   },
   {
     id: "cat-veg",
     title: "Veg Main Course",
     items: [
-      {name:"Dal Tadka", price:"₹169"},
-      {name:"Mushroom Do Payaza", price:"₹269"},
-      {name:"Paneer Do Payaza", price:"₹279"},
-      {name:"Paneer Butter Masala", price:"₹285"},
-      {name:"Paneer Kadhai", price:"₹259"},
-      {name:"Mutter Paneer", price:"₹269"},
-      {name:"Shahi Paneer", price:"₹259"},
-      {name:"Paneer Masala", price:"₹269"},
-      {name:"Paneer Punjabi", price:"₹279"},
-      {name:"Dal Mughlai", price:"₹269"},
-      {name:"Mix Veg", price:"₹269"}
+      {name:"Dal Tadka", price:"₹149"},
+      {name:"Mushroom Do Payaza", price:"₹249"},
+      {name:"Paneer Do Payaza", price:"₹259"},
+      {name:"Paneer Butter Masala", price:"₹265"},
+      {name:"Paneer Kadhai", price:"₹249"},
+      {name:"Mutter Paneer", price:"₹249"},
+      {name:"Shahi Paneer", price:"₹239"},
+      {name:"Paneer Masala", price:"₹249"},
+      {name:"Paneer Punjabi", price:"₹259"},
+      {name:"Dal Mughlai", price:"₹259"},
+      {name:"Mix Veg", price:"₹249"}
     ]
   },
   {
@@ -411,9 +411,9 @@ const MENU_DATA = [
       {name:"Tandoori Roti", price:"₹20 / ₹25"},
       {name:"Naan", price:"₹50 / ₹55"},
       {name:"Garlic Naan", price:"₹65"},
-      {name:"Laccha Paratha", price:"₹49"},
+      {name:"Laccha Paratha", price:"₹39"},
       {name:"Stuff Naan", price:"₹79"},
-      {name:"Kulcha Naan", price:"₹79"}
+      {name:"Stuff Kulcha", price:"₹79"}
     ]
   },
   {
@@ -421,18 +421,18 @@ const MENU_DATA = [
     title: "Rolls, Soups & Salad",
     items: [
       {name:"Chicken Shawarma", price:"₹99"},
-      {name:"Chicken Tikka Roll", price:"₹129"},
-      {name:"Malai Tikka Roll", price:"₹149"},
+      {name:"Chicken Tikka Roll", price:"₹119"},
+      {name:"Malai Tikka Roll", price:"₹139"},
       {name:"Paneer Tikka Roll", price:"₹149"},
       {name:"Egg Roll", price:"₹89"},
-      {name:"Veg Soup", price:"₹139"},
-      {name:"Veg Manchow Soup", price:"₹149"},
-      {name:"Chicken Soup", price:"₹169"},
-      {name:"Chicken Manchow Soup", price:"₹179"},
-      {name:"Chicken Hot & Sour Soup", price:"₹169"},
-      {name:"Green Salad", price:"₹79"},
-      {name:"Family Salad", price:"₹139"},
-      {name:"Onion Salad", price:"₹59"},
+      {name:"Veg Soup", price:"₹119"},
+      {name:"Veg Manchow Soup", price:"₹129"},
+      {name:"Chicken Soup", price:"₹149"},
+      {name:"Chicken Manchow Soup", price:"₹159"},
+      {name:"Chicken Hot & Sour Soup", price:"₹149"},
+      {name:"Green Salad", price:"₹69"},
+      {name:"Family Salad", price:"₹129"},
+      {name:"Onion Salad", price:"₹49"},
       {name:"Roasted Papad", price:"₹39"},
       {name:"Fried Papad", price:"₹49"},
       {name:"Masala Papad", price:"₹59"}
@@ -442,24 +442,21 @@ const MENU_DATA = [
     id: "cat-chinese",
     title: "Noodles & Tea",
     items: [
-      {name:"Veg Noodles", price:"₹139"},
-      {name:"Chicken Noodles", price:"₹179"},
-      {name:"Paneer Noodles", price:"₹159"},
-      {name:"Veg Manchurian", price:"₹269"},
-      {name:"Chicken Manchurian", price:"₹289"},
-      {name:"Chicken Egg Noodles", price:"₹219"},
+      {name:"Veg Noodles", price:"₹129"},
+      {name:"Chicken Noodles", price:"₹169"},
+      {name:"Paneer Noodles", price:"₹149"},
+      {name:"Veg Manchurian", price:"₹249"},
+      {name:"Chicken Manchurian", price:"₹269"},
+      {name:"Chicken Egg Noodles", price:"₹199"},
       {name:"Normal Tea", price:"₹20"},
       {name:"Elaichi Tea", price:"₹30"},
       {name:"Masala Tea", price:"₹30"},
       {name:"Adrak Tea", price:"₹30"},
-      {name:"Coffee", price:"₹49"}
+      {name:"Coffee", price:"₹49"},
+      {name:"Mineral Water", price:"On MRP"}
     ]
   },
   {
-    id: "cat-extras",
-    title: "Extras",
-    items: [,
-              
     id: "cat-pizza-burger",
     title: "Pizza, Burgers & Fries",
     items: [
@@ -498,7 +495,8 @@ const MENU_DATA = [
       {name: "Mango Ice Cream", price: "₹85"},
       {name: "Chocolate Ice Cream", price: "₹85"},
       {name: "Dream Scoop", price: "₹129"},
-      {name: "Tricone / Stick", price: "On MRP"}
+      {name: "Tricone", price: "On MRP"},
+      {name: "Stick Ice Cream", price: "On MRP"}
     ]
   },
   {
@@ -522,18 +520,18 @@ const MENU_DATA = [
       {name: "Chocolate Shake", price: "₹149"},
       {name: "Mango Shake", price: "₹149"}
     ]
-   },
+  },
   {
     id: "cat-extras",
     title: "Extras",
     items: [
       {name: "Extra Mandi Rice", price: "₹199"},
-      {name: "Extra Chicken", price: "₹120 / ₹259"},
-      {name: "Extra Mutton", price: "₹169 / ₹319"}
+      {name: "Extra Chicken", price: "Half ₹120 / Full ₹239"},
+      {name: "Extra Mutton", price: "Half ₹149 / Full ₹299"},
+      {name: "Extra Soup", price: "₹119"}
     ]
   }
 ];
-  
 
 // RENDER ALL MENU ITEMS
 const container = document.getElementById('fullMenuContainer');
